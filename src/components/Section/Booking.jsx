@@ -3,9 +3,12 @@ import { useState } from "react";
 import fromImg from "../../assets/icons/Frame.svg";
 import gImg from "../../assets/icons/Vector (1).svg";
 import clsImg from "../../assets/icons/Vector (3).svg";
+import { useDispatch } from "react-redux";
+import { addBooking } from "../../redux/booking/actions";
 
 export default function Booking() {
     const [id, setId] = useState(1);
+    const dispatch = useDispatch();
 
     const bookingData = {};
 
@@ -20,8 +23,10 @@ export default function Booking() {
                 bookingData[selectedEl.name] = selectedEl.value;
             }
         }
+        bookingData["id"] = id;
 
         // dispatch
+        dispatch(addBooking(bookingData));
 
         e.target.reset();
         setId((prevId) => prevId + 1);
