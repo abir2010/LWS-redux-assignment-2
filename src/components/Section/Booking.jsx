@@ -1,24 +1,52 @@
+/* eslint-disable no-unused-vars */
+import { useState } from "react";
 import fromImg from "../../assets/icons/Frame.svg";
 import gImg from "../../assets/icons/Vector (1).svg";
 import clsImg from "../../assets/icons/Vector (3).svg";
 
 export default function Booking() {
+    const [id, setId] = useState(1);
+
+    const bookingData = {};
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        // console.log(e.target);
+        const element = e.target;
+        for (let i = 0; i < element.elements.length; i++) {
+            const selectedEl = element.elements[i];
+            if (selectedEl.name) {
+                bookingData[selectedEl.name] = selectedEl.value;
+            }
+        }
+
+        // dispatch
+
+        e.target.reset();
+        setId((prevId) => prevId + 1);
+        // console.log(bookingData);
+    };
+
     return (
         <div className="mt-[160px] mx-4 md:mt-[160px] relative">
             <div className="bg-white rounded-md max-w-6xl w-full mx-auto">
-                <form className="first-hero lws-inputform">
+                <form
+                    onSubmit={handleSubmit}
+                    className="first-hero lws-inputform"
+                >
                     {/* From */}
                     <div className="des-from">
                         <p>Destination From</p>
                         <div className="flex flex-row">
-                            <img src={fromImg} alt />
+                            <img src={fromImg} alt="" />
                             <select
                                 className="outline-none px-2 py-2 w-full"
                                 name="from"
                                 id="lws-from"
                                 required
                             >
-                                <option value hidden>
+                                <option value="" hidden>
                                     Please Select
                                 </option>
                                 <option>Dhaka</option>
@@ -32,14 +60,14 @@ export default function Booking() {
                     <div className="des-from">
                         <p>Destination To</p>
                         <div className="flex flex-row">
-                            <img src={fromImg} alt />
+                            <img src={fromImg} alt="" />
                             <select
                                 className="outline-none px-2 py-2 w-full"
                                 name="to"
                                 id="lws-to"
                                 required
                             >
-                                <option value hidden>
+                                <option value="" hidden>
                                     Please Select
                                 </option>
                                 <option>Dhaka</option>
@@ -64,14 +92,14 @@ export default function Booking() {
                     <div className="des-from">
                         <p>Guests</p>
                         <div className="flex flex-row">
-                            <img src={gImg} alt />
+                            <img src={gImg} alt="" />
                             <select
                                 className="outline-none px-2 py-2 w-full"
                                 name="guests"
                                 id="lws-guests"
                                 required
                             >
-                                <option value hidden>
+                                <option value="" hidden>
                                     Please Select
                                 </option>
                                 <option value={1}>1 Person</option>
@@ -85,14 +113,14 @@ export default function Booking() {
                     <div className="des-from !border-r-0">
                         <p>Class</p>
                         <div className="flex flex-row">
-                            <img src={clsImg} alt />
+                            <img src={clsImg} alt="" />
                             <select
                                 className="outline-none px-2 py-2 w-full"
                                 name="ticketClass"
                                 id="lws-ticketClass"
                                 required
                             >
-                                <option value hidden>
+                                <option value="" hidden>
                                     Please Select
                                 </option>
                                 <option>Business</option>
