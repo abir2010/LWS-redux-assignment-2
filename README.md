@@ -1,3 +1,6 @@
+## LWS-redux-assignment-1
+### Live project link : https://assignment-2-booking-lws.netlify.app/
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
