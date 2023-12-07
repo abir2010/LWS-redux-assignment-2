@@ -1,4 +1,4 @@
-## LWS-redux-assignment-1
+## LWS-redux-assignment-2
 ### Live project link : https://assignment-2-booking-lws.netlify.app/
 
 # React + Vite
